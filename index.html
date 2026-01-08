@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Said-Movie</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="media.css">
+    <link rel="stylesheet" href="animation.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 col-md-3 col-lg-3 leftPart">
+                <div class="headOfLeft">
+                    <i class="fa-solid fa-video"></i>
+                    <h4>Said Movie/Series Searcher</h4>
+                </div>
+                <div class="listOfRibbon">
+                    <li data-section="home">Home</li>
+                    <li data-section="movies">Movies</li>
+                    <li data-section="series">Series</li>
+                    <li data-section="genres">Genres</li>
+                    <li data-section="imdb">IMDB</li>
+                    <li data-section="favorites">Favorites</li>
+                </div>
+
+                <div class="ApiName">
+                    <h4 style="color: #F5C518;">API</h4>
+                    <h5 style="color: gray;">Data from TMDB API</h5>
+                </div>
+
+
+            </div>
+
+            <div class="col-sm-12 col-md-9 col-lg-9 rightPart">
+                <div class="navControls">
+                    <button id="backBtn"><</button>
+                    <button id="forwardBtn">></button>
+                </div>
+
+                <button id="toggle">☰</button>
+                <section id="home" class="section active">
+                    <h1 style="color: #F5C518;text-align: center;margin-top: 5%;">Movies/Series</h1>
+
+                    <div class="topOfRight">
+
+                        <form action="" class="SearchPart">
+                            <input id="search" class="inputOfPage" autocomplete="off" type="text"
+                                placeholder="Search Movies/Series">
+                            <input id="searchBtn" class="submitOfPage" type="submit" value="Search">
+                            <input id="resetBtnOfHome" class="resetBtnOfPage" type="reset" value="Reset">
+
+                        </form>
+                        <div class="dropdown">
+                            <div class="recentSearches">
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                    <div class="results">
+
+                    </div>
+                </section>
+                <section id="movies" class="section">
+                    <h1 style="color: #F5C518;text-align: center;margin-top: 5%;">Movies</h1>
+                    <div class="topOfRight">
+                        <form action="" class="SearchPart">
+                            <input id="searchMovies" class="inputOfPage" autocomplete="off" type="text"
+                                placeholder="Search Movies">
+                            <input id="searchMoviesBtn" class="submitOfPage" type="submit" value="Search">
+                            <input id="resetBtnOfMovies" class="resetBtnOfPage" type="reset" value="Reset">
+
+                        </form>
+                        <div class="dropdown">
+                            <div class="recentSearches">
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                    <div class="resultsOfMovies results">
+                    </div>
+
+                </section>
+                <section id="series" class="section">
+                    <h1 style="color: #F5C518;text-align: center;margin-top: 5%;">Series</h1>
+                    <div class="topOfRight">
+                        <form action="" class="SearchPart">
+                            <input id="searchSeries" class="inputOfPage" autocomplete="off" type="text"
+                                placeholder="Search Series">
+                            <input id="searchMoviesBtn" class="submitOfPage" type="submit" value="Search">
+                            <input id="resetBtnOfSeries" class="resetBtnOfPage" type="reset" value="Reset">
+
+                        </form>
+                        <div class="dropdown">
+                            <div class="recentSearches">
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                    <div class="resultsOfSeries results">
+                    </div>
+
+                </section>
+                <section id="genres" class="section">
+                    <h1 style="color: #F5C518;text-align: center;margin-top: 3%;" id="dynamicGenreName">Genres</h1>
+                    <div id="genresDivs">
+                        <div class="genre">Action</div>
+                        <div class="genre">Adventure</div>
+                        <div class="genre">Drama</div>
+                        <div class="genre">Comedy</div>
+                        <div class="genre">Thriller</div>
+                        <div class="genre">Horror</div>
+                        <div class="genre">Romance</div>
+                        <div class="genre">Science Fiction</div>
+                        <div class="genre">Fantasy</div>
+                        <div class="genre">Mystery</div>
+                        <div class="genre">Crime</div>
+                        <div class="genre">Animation</div>
+                    </div>
+                    <div class="genresSelect">
+                        <select name="" id="selectGenre">
+                            <option value="" disabled selected hidden>Select a genre</option>
+                            <option value="Documentary">Documentary</option>
+                            <option value="Family">Family</option>
+                            <option value="War">War</option>
+                            <option value="Western">Western</option>
+                            <option value="History">History</option>
+                        </select>
+                        <button class="submitOfPage">Search</button>
+
+                    </div>
+
+
+
+                    <div class="resultsOfGenres results">
+                    </div>
+
+                </section>
+                <section id="imdb" class="section">
+                    <h1 style="color: #F5C518;text-align: center;margin-top: 5%;">IMDB</h1>
+                    <form action="" id="formOfImdb">
+                        <input type="number" class="elementsOfImdb ratefirstOfImdb" placeholder="Minimum Rate(0-10)">
+                        <input type="number" class="elementsOfImdb ratesecondOfImdb" placeholder="Maximum Rate(0-10)">
+                        <input type="submit" class="elementsOfImdb" value="Search"
+                            style="background-color: #F5C518 ;border: none;">
+                    </form>
+
+                    <h2 style="color: white;margin-top: 5%;margin-left: 30px;" id="topRatedText">Top Rated</h2>
+
+
+                    <div class="resultsOfImdb results" style="margin-top: 5%;">
+                    </div>
+                </section>
+                <section id="favorites" class="section">
+                    <h1 style="color: #F5C518;text-align: center;margin-top: 5%;">Favorites</h1>
+                    <div class="resultsOfFavorites results" style="margin-top: 4%;">
+                    </div>
+                </section>
+                <div id="loading" class="section" style="display: none;">
+                    <h1 style="color: #F5C518;">Loading</h1>
+                    <div class="ball"></div>
+                    <div class="ball" style="animation-delay: 0.5s;"></div>
+                    <div class="ball" style="animation-delay: 1s;"></div>
+                </div>
+                <section id="movieTickingPart" class="section">
+                    <div id="header">
+                        <div id="movieTickingCoverDiv">
+
+                        </div>
+                        <h2 id="nameOfTickingMovie" style="padding-top: 30px;grid-column: 2;grid-row: 1;color: white;">
+                        </h2>
+                        <p id="infoTextOfTicking" style="grid-column: 2;grid-row: 2;color: white;"></p>
+                    </div>
+                    <div class="releaseAndImdb">
+                        <h2 id="releaseDate"></h2>
+                        <h2 id="runtime"></h2>
+                        <div class="imdbRate">
+                            <h2><span id="rateOfMovieTicking" style="color: #F5C518;"></span> /10</h2>
+                        </div>
+
+
+                    </div>
+                    <h2 style="color: #F5C518;padding: 30px 20px;">Cast</h2>
+                    <div class="cast">
+
+                    </div>
+                </section>
+            </div>
+
+
+
+        </div>
+    </div>
+    </div>
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+        integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+        crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+
+</body>
+
+</html>

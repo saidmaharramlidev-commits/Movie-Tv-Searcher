@@ -1,0 +1,119 @@
+@media (max-width:768px) {
+    .headOfLeft h4 {
+        font-size: 1.2rem;
+    }
+
+    .headOfLeft i {
+        font-size: 2.1rem;
+    }
+
+    .listOfRibbon li {
+        font-size: 1.6rem;
+    }
+
+    .posterDiv {
+        width: 25%;
+    }
+
+    .likeDiv {
+        width: 30px;
+        height: 30px;
+
+    }
+
+    .ratingOfMovie {
+        width: 40px;
+        height: 40px;
+        padding-top: 4px;
+    }
+
+    .likeIcon {
+        font-size: 2rem;
+    }
+
+    .ApiName h5 {
+        font-size: 1.1rem;
+    }
+
+    .ApiName {
+
+        margin-top: 75%;
+    }
+
+    .actor {
+        width: 130px;
+    }
+
+    #infoTextOfTicking {
+        font-size: 0.7rem;
+    }
+
+}
+
+
+@media (max-width:480px) {
+    .leftPart {
+        z-index: 1000;
+        width: 50%;
+        height: 100%;
+        left: -250px;
+        transition: left 0.3s ease;
+
+    }
+
+    .rightPart {
+        margin-left: 0;
+    }
+
+
+    #releaseDate {
+        font-size: 1rem;
+        padding: 5px;
+        padding-top: 23px;
+    }
+
+    #runtime {
+        font-size: 1rem;
+        padding: 5px 15px;
+        padding-top: 23px;
+    }
+
+    .imdbRate {
+        font-size: 1rem;
+        padding: 5px 15px;
+        padding-top: 17px;
+
+    }
+
+    #infoTextOfTicking {
+        font-size: 0.7rem;
+    }
+
+    #movieTickingCoverDiv {
+        width: 150px;
+        height: 230px;
+    }
+
+    #toggle {
+        display: block;
+        z-index: 1000;
+    }
+
+    .open {
+        left: 0;
+        transition: 0.7s;
+    }
+
+    .genre {
+        font-size: 1rem;
+    }
+    .navControls{
+        left: 10px;
+        top:15px;
+    }
+
+
+
+
+
+}

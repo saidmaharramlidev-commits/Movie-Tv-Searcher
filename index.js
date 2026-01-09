@@ -78,24 +78,26 @@ menuItems.forEach(item => {
     item.addEventListener("click", () => {
         const target = item.dataset.section
         pushSection(target);
+    
+
     })
 })
 
 document.addEventListener("click", async (e) => {
-    const card = e.target.closest(".movie, .serie, .posterDiv[data-id]")
-    if (!card) return
-    if (e.target.closest(".likeDiv")) return
+    const card = e.target.closest(".movie, .serie, .posterDiv[data-id]");
+    if (!card) return;
+    if (e.target.closest(".likeDiv")) return;
 
+    toggle.style.display = "none";
 
+    loadingDiv.style.visibility = 'visible'
 
-    sections.forEach(sec => sec.classList.remove("active"))
-    document.getElementById(card.dataset.section).classList.add("active")
-    toggle.style.display = "none"
+    await loadDetails(card.dataset.id, card.dataset.type);
 
-    await loadDetails(card.dataset.id, card.dataset.type)
-    
-    pushSection(card.dataset.section);
-})
+    loadingDiv.style.visibility = 'hidden'
+
+    pushSection("movieTickingPart");
+});
 
 
 
@@ -159,6 +161,7 @@ homeSearchForm.addEventListener("submit", async (e) => {
     loadingDiv.style.visibility = 'hidden'
 
 
+
 })
 
 
@@ -184,6 +187,7 @@ moviesSearchForm.addEventListener("submit", async (e) => {
     saveRecent(query)
     await fetchMoviesForMovies(query, moviesResults)
     loadingDiv.style.visibility = 'hidden'
+
 })
 
 //-------------------------------------------------SERIES SEARCH----------------------------------------------------------------
@@ -208,6 +212,7 @@ seriesSearchForm.addEventListener("submit", async (e) => {
     saveRecent(query)
     await fetchSeries(query, seriesResults)
     loadingDiv.style.visibility = 'hidden'
+
 })
 
 
@@ -225,6 +230,7 @@ submitBtn.addEventListener("click", async (e) => {
     loadingDiv.style.visibility = 'visible'
     await fetchGenre(selectorOfGenres.value, genresResults)
     loadingDiv.style.visibility = 'hidden'
+  
 })
 
 genresDivs.forEach((genreDiv) => {
@@ -239,7 +245,9 @@ genresDivs.forEach((genreDiv) => {
         loadingDiv.style.visibility = 'hidden'
 
 
+
     })
+
 
 })
 
@@ -616,8 +624,19 @@ document.addEventListener("click", (e) => {
 
 
 async function loadDetails(id, type) {
+    
+    
     const res = await fetch(`https://api.themoviedb.org/3/${type}/${id}?language=en-US`, TMDB_HEADERS)
     const data = await res.json()
+    const resCast = await fetch(
+        `https://api.themoviedb.org/3/${type}/${id}/credits`,
+        TMDB_HEADERS
+    );
+    const dataCast = await resCast.json();
+
+    
+
+
 
     movieTickingCoverDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original${data.poster_path})`
 
@@ -642,11 +661,7 @@ async function loadDetails(id, type) {
 
 
 
-    const resCast = await fetch(
-        `https://api.themoviedb.org/3/${type}/${id}/credits`,
-        TMDB_HEADERS
-    );
-    const dataCast = await resCast.json();
+
 
     // clear old cast first
     cast.innerHTML = "";
@@ -670,6 +685,8 @@ async function loadDetails(id, type) {
         div.append(img, name);
         cast.append(div);
     });
+
+
 
 
 }
@@ -702,6 +719,7 @@ function updateNavButtons() {
 
 backBtn.addEventListener("click", () => {
     history.back();
+
 });
 
 forwardBtn.addEventListener("click", () => {
@@ -710,12 +728,15 @@ forwardBtn.addEventListener("click", () => {
 
 // push state when section changes
 function pushSection(sectionId) {
-    history.pushState({ section: sectionId }, "", `#${sectionId}`);
-    // Update screen immediately
     sections.forEach(sec => sec.classList.remove("active"));
-    document.getElementById(sectionId).classList.add("active");
+
+    const target = document.getElementById(sectionId);
+    target.classList.add("active");
+
+    history.pushState({ section: sectionId }, "", `#${sectionId}`);
     updateNavButtons();
 }
+
 
 // listen to browser navigation
 window.addEventListener("popstate", (e) => {
@@ -723,8 +744,11 @@ window.addEventListener("popstate", (e) => {
 
     sections.forEach(sec => sec.classList.remove("active"));
     document.getElementById(e.state.section).classList.add("active");
-    updateNavButtons()
+
+    updateNavButtons();
 });
+
+
 
 
 

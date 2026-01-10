@@ -78,7 +78,7 @@ menuItems.forEach(item => {
     item.addEventListener("click", () => {
         const target = item.dataset.section
         pushSection(target);
-    
+
 
     })
 })
@@ -87,8 +87,6 @@ document.addEventListener("click", async (e) => {
     const card = e.target.closest(".movie, .serie, .posterDiv[data-id]");
     if (!card) return;
     if (e.target.closest(".likeDiv")) return;
-
-    toggle.style.display = "none";
 
     loadingDiv.style.visibility = 'visible'
 
@@ -230,7 +228,7 @@ submitBtn.addEventListener("click", async (e) => {
     loadingDiv.style.visibility = 'visible'
     await fetchGenre(selectorOfGenres.value, genresResults)
     loadingDiv.style.visibility = 'hidden'
-  
+
 })
 
 genresDivs.forEach((genreDiv) => {
@@ -624,8 +622,8 @@ document.addEventListener("click", (e) => {
 
 
 async function loadDetails(id, type) {
-    
-    
+
+
     const res = await fetch(`https://api.themoviedb.org/3/${type}/${id}?language=en-US`, TMDB_HEADERS)
     const data = await res.json()
     const resCast = await fetch(
@@ -634,7 +632,7 @@ async function loadDetails(id, type) {
     );
     const dataCast = await resCast.json();
 
-    
+
 
 
 

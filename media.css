@@ -67,22 +67,29 @@
 
 
     #releaseDate {
-        font-size: 1rem;
-        padding: 5px;
-        padding-top: 23px;
+        font-size: 0.8rem;
+        padding: 5px 15px;
+        padding-top: 26px;
     }
 
     #runtime {
-        font-size: 1rem;
-        padding: 5px 15px;
-        padding-top: 23px;
+        font-size: 0.8rem;
+        padding: 5px 17px;
+        padding-top: 26px;
     }
 
     .imdbRate {
-        font-size: 1rem;
         padding: 5px 15px;
-        padding-top: 17px;
+        padding-top: 20px;
 
+    }
+
+    .imdbRate h2 {
+        font-size: 1.5rem;
+    }
+
+    #rateOfMovieTicking {
+        font-size: 1.5rem;
     }
 
     #infoTextOfTicking {
@@ -107,9 +114,17 @@
     .genre {
         font-size: 1rem;
     }
-    .navControls{
+
+    .navControls {
         left: 10px;
-        top:15px;
+        top: 15px;
+
+    }
+
+    .navControls button {
+        width: 35px;
+        height: 35px;
+        padding-bottom: 2px;
     }
 
 

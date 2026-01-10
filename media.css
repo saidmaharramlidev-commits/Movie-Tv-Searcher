@@ -68,28 +68,28 @@
 
     #releaseDate {
         font-size: 0.8rem;
-        padding: 5px 15px;
+        padding: 5px 20px;
         padding-top: 26px;
     }
 
     #runtime {
         font-size: 0.8rem;
-        padding: 5px 17px;
+        padding: 5px 20px;
         padding-top: 26px;
     }
 
     .imdbRate {
-        padding: 5px 15px;
-        padding-top: 20px;
+        padding: 5px 20px;
+        padding-top: 23px;
 
     }
 
     .imdbRate h2 {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
 
     #rateOfMovieTicking {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
 
     #infoTextOfTicking {
